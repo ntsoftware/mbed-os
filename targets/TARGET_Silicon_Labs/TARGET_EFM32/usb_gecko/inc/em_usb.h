@@ -244,6 +244,12 @@ extern "C" {
 #define USB_DPLL_SRC_LFXO                 1     /**< Use LFXO as DPLL clock source.                        */
 #define USB_DPLL_SRC_HFXO                 2     /**< Use HFXO as DPLL clock source.                        */
 
+/* char16_t is a built-in type in C++11 and redefining this type is an error.
+ * According to the standard, the macro __cplusplus should be set to 201103L for C++11-compliant compilers.
+ */
+
+#if !defined(__cplusplus) || __cplusplus < 201103L
+
 #if defined(__GNUC__)                     /* GCC compilers */
 #if defined(__CHAR16_TYPE__)
 typedef __CHAR16_TYPE__ char16_t;
@@ -256,6 +262,8 @@ typedef unsigned short char16_t;          /**< Data type used for UTF-16LE forma
 
 #elif defined(__CC_ARM)                   /* MDK-ARM compiler */
 typedef unsigned short char16_t;
+#endif
+
 #endif
 
 /** Macro for creating USB compliant UTF-16LE UNICODE string descriptors.

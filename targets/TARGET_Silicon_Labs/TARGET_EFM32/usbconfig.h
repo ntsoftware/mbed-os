@@ -22,14 +22,14 @@ extern "C" {
 #endif
 
 #define USB_DEVICE        /* Compile stack for device mode. */
-#define USB_PWRSAVE_MODE (USB_PWRSAVE_MODE_ONSUSPEND | USB_PWRSAVE_MODE_ONVBUSOFF)
+#define USB_PWRSAVE_MODE (USB_PWRSAVE_MODE_ONSUSPEND | USB_PWRSAVE_MODE_ONVBUSOFF | USB_PWRSAVE_MODE_ENTEREM2)
 
 /****************************************************************************
 **                                                                         **
 ** Specify total number of endpoints used (in addition to EP0).            **
 **                                                                         **
 *****************************************************************************/
-#define NUM_EP_USED 5
+#define NUM_EP_USED 6
 
 /****************************************************************************
 **                                                                         **
@@ -37,6 +37,25 @@ extern "C" {
 **                                                                         **
 *****************************************************************************/
 #define NUM_APP_TIMERS 2
+
+// /****************************************************************************
+// **                                                                         **
+// ** Configure serial port debug output.                                     **
+// **                                                                         **
+// *****************************************************************************/
+// /* Define a function for transmitting a single char on the serial port. */
+// extern int RETARGET_WriteChar(char c);
+// #define USER_PUTCHAR RETARGET_WriteChar
+
+// /* Debug USB API functions (illegal input parameters etc.) */
+// #define DEBUG_USB_API
+
+// /*
+//  * Some utility functions in the API needs printf. These
+//  * functions have "print" in their name. This macro enables
+//  * these functions.
+//  */
+// #define USB_USE_PRINTF             /* Uncomment to enable   */
 
 #ifdef __cplusplus
 }
