@@ -9511,7 +9511,8 @@
             "FLASH",
             "ITM",
             "MPU",
-            "WATCHDOG"
+            "WATCHDOG",
+            "USBDEVICE"
         ],
         "forced_reset_timeout": 2,
         "config": {
